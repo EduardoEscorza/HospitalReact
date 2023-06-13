@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Login_Component from './components/Login_Component';
-import HomeComponent from './components/HomeComponent';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login_Component from './components/LoginComponent';
+import HomeComponent from './components/HomeComponent';
 import { useEffect, useState } from 'react';
 import secureLocalStorage from 'react-secure-storage';
 
