@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login_Component from './components/LoginComponent';
+import LoginComponent from './components/LoginComponent';
 import HomeComponent from './components/HomeComponent';
 import { useEffect, useState } from 'react';
 import secureLocalStorage from 'react-secure-storage';
@@ -17,8 +17,8 @@ function App() {
 
 return (
   <Routes>
-      <Route path="/" element={<Login_Component />}/>
-      <Route path="/home" element={token == null ? <Login_Component /> :<HomeComponent />}/>
+      <Route path="/" element={<LoginComponent />}/>
+      <Route path="/home" element={token == null ? <LoginComponent /> :<HomeComponent />}/>
   </Routes>
 
 );

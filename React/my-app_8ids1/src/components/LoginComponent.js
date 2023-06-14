@@ -14,7 +14,8 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
 
 import axios from 'axios';
-import secureLocalStore from "react-secure-storage";
+import secureLocalStorage from "react-secure-storage";
+import { useNavigate } from 'react-router-dom';
 
 function HomeIcon(props) {
     return (
@@ -26,42 +27,48 @@ function HomeIcon(props) {
 
 const LoginComponent = () => {
   const [dLogin, setDLogin] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
+  });
+
+  const [errLogin, setErrLogin] = useState({
+    visible: false,
+    detalle: "",
   });
 
   const inputChange = (event)=>(
     setDLogin({
       ...dLogin,
-      [event.target.name] : event.target.value 
+      [event.target.name] : event.target.value, 
     })
   )
+
+  const navigate = useNavigate();
 
   const fnLogin = async (e) => {
     e.preventDefault();
 
-    console.log('Usuario: ' + dLogin.email)
-    console.log('Contraseña: ' + dLogin.password)
+    console.log("Usuario: " + dLogin.email)
+    console.log("Contraseña: " + dLogin.password)
 
-    await axios.post('http://127.0.0.1:8000/api/login', dLogin)
+    await axios
+    .post("http://127.0.0.1:8000/api/login", dLogin)
     .then((response) => {
-      console.log("Validando Acceso..")
-      console.log(response.data)
-      if (response.date.token !== "") 
-      {
-        console.log("Ok")
-        secureLocalStore.setItem('token', response.data.token)
+      console.log("Validando Acceso..");
+      console.log(response.data);
+      if (response.data.token !== "") {
+        console.log("Ok");
+        secureLocalStorage.setItem('token', response.data.token);
+        navigate("/home");
       } 
       else 
       {
-        console.log("Error" + response.data.error)  
+        console.log("Error" + response.data.error);  
       }
     }).catch((error) => {
-
+      console.log("error2");
     })
   }
-
-    
 
   return (
 
