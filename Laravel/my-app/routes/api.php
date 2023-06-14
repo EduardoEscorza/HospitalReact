@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PacienteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('login', [LoginController::class, 'login']);
+Route::get('pacientes', [PacienteController::class, 'list']);
+Route::post('paciente/crear', [PacienteController::class, 'create']);
+Route::post('paciente/borrar', [PacienteController::class, 'delete']);

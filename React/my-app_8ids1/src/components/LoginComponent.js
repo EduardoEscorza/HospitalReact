@@ -10,7 +10,6 @@ import Container from '@mui/material/Container';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import SvgIcon from '@mui/material/SvgIcon';
 import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
 
 import axios from 'axios';
@@ -114,10 +113,7 @@ const LoginComponent = () => {
                 </Box>
             </CardActions>
             <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert severity="success">
-        <AlertTitle>Success</AlertTitle>
-        This is a success alert — <strong>check it out!</strong>
-      </Alert>
+              <Alert severity="success">{errLogin.detalle}</Alert>
             </Stack>
         </Card>
                 </Box>
