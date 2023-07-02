@@ -1,8 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import { useNavigate } from 'react-router-dom';
 
 const HomeComponent = () => {
+
+const actions = [
+  { icon: <FileCopyIcon />, name: 'Nuevo', key: 'nuevo' },
+  
+];
+
+const handleFunction = (e, key) => {
+  e.preventDefault()
+if(key === "save"){
+ console.log("guardado")
+ navigate("/paciente/crear");
+} else {}
+  console.log("Presiono boton " + key)
+}
+
+const navigate = useNavigate();
+
+const handleRowClick = (params) => {
+  console.log('ID: ' + params.row.id)
+  console.log('Nombre: ' + params.row.nombre)
+  navigate('/paciente/nuevo',{
+      state: {
+        id: params.row.id,
+        nombre: params.row.nombre
+      }
+  })
+}
+
+const fnNuevo = (params) => {
+  navigate('/paciente/crear',{
+
+  })
+}
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -42,7 +81,27 @@ const HomeComponent = () => {
 
 
   return (
-    <div>
+    <div align="center">
+      
+      <SpeedDial
+        ariaLabel="SpeedDial basic example"
+        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+        icon={<SpeedDialIcon />}
+      >
+        {actions.map((action) => (
+          <SpeedDialAction
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+            onClick={
+              (e) => {
+                fnNuevo(e, action.key)
+              }
+            }
+          />
+        ))}
+      </SpeedDial>
+
       <DataGrid
     rows={rows}
     columns={columns}
@@ -52,7 +111,7 @@ const HomeComponent = () => {
       },
     }}
     pageSizeOptions={[5, 10]}
-    checkboxSelection
+    onRowClick={handleRowClick}
   />
   </div>
   )

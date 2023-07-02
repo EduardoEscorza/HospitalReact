@@ -74,8 +74,8 @@ const LoginComponent = () => {
     <div className='principal'>
         <React.Fragment>
         <CssBaseline />
-            <Container maxWidth="80%">
-                <Box sx={{ bgcolor: '#cfe8fc', height: '500px', marginTop: 5, padding:5}}>
+            <Container maxWidth="90%">
+                <Box sx={{  height: '700px', marginTop: 5, padding:5}}>
                 <Card sx={{ maxWidth: 500,marginLeft: 50,marginTop: 1, paddingTop:5, border:1}}>
       <CardContent>
             <Box>
@@ -83,7 +83,7 @@ const LoginComponent = () => {
             </Box>
             <Box
             component="form"
-            sx={{'& > :not(style)': { marginLeft: 15,marginTop: 5,marginBottom:3, width: '25ch',border:1},}}
+            sx={{'& > :not(style)': { marginLeft: 15,marginTop: 5,marginBottom:3, width: '25ch'},}}
             noValidate
             autoComplete="off">
             <TextField name='email' id="outlined-basic" 
@@ -92,7 +92,7 @@ const LoginComponent = () => {
             </Box>
             <Box
             component="form"
-            sx={{'& > :not(style)': { marginLeft: 15,marginBottom:1, width: '25ch',border:1},}}
+            sx={{'& > :not(style)': { marginLeft: 15,marginBottom:1, width: '25ch'},}}
             noValidate
             autoComplete="off">
             <TextField
@@ -106,12 +106,13 @@ const LoginComponent = () => {
             </CardContent>
             <CardActions>
                 <Box>
-                    <Button onClick={fnLogin} variant="contained" color="success"
-                    sx={{ marginLeft: 23,border:3,fontSize: 20}}>
+                    <Button onClick={fnLogin} variant="contained" color="primary"
+                    sx={{ marginLeft: 23,border:0,fontSize: 20}}>
                     Login
                     </Button>
                 </Box>
             </CardActions>
+            
             <Stack sx={{ width: '100%' }} spacing={2}>
               <Alert severity="success">{errLogin.detalle}</Alert>
             </Stack>

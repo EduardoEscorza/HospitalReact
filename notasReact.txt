@@ -1,0 +1,98 @@
+cmd=
+npm -v
+composer --version
+php -v
+
+crear carpeta react, copiar el codigo y pegarlo 
+npx create-react-app my-app_8ids1
+
+si aparece error ejeutar el siguiente codigo
+npm install -g create-react-app
+
+despues el mensaje de happy hacking ejecutar el directorio
+que aparece y luego darle npm start
+
+
+Laravel
+composer
+
+
+abiri app.js
+
+Quitar browse router y mandarlo a index.js
+
+crear componentes HomeComponent.js
+escribir rafce y se creara el nuevo componente de home
+
+abrir terminal npm install axios
+npm install react-secure-storage
+rafce
+
+en LoginComponent
+const LoginComponent = () => {
+	
+	const [dLogin,setDLogin]= useState({
+		email:'',
+		password:'',
+	});
+
+
+	const inputChange = (event) => {
+		setDLogin({
+			...dLogin,
+		[event.target.name] : event.target.value
+		})
+	}
+
+	const fnLogin = async (e) => {
+		e.preventDefault();
+		
+	console.log('usuario: ' + dLogin.email)
+	console.log('contraseña: ' + dLogin.email)
+	}
+	
+	await axios.post('http://127.0.0.1:8000/api/login',dLogin)
+	.then((response) => {
+	console.log("Validando Acceso..")
+	console.log(responsedata)
+	if(response.data.token !== "")
+	{
+	console.log("ok")
+	secureLocalStorage.setItem('token', response.data.token)
+	}else{
+	console.log("Error" + response.data.error)
+	}
+
+	}).catch((error) => {
+	
+	})
+	}
+	
+	return
+	)
+}
+
+
+em textfield usuario y contraseña
+usuario: value={dLogin.email} onChange={(e) => inputChange(e)} label usuario name="email"
+password: value={dLogin.password} onChange={(e) => inputChange(e)} name="password"
+
+
+funcion para iniciar el login abajo de input change antes de return
+	const fnLogin = async (e) => {
+		e.preventDefault();
+		
+	console.log('usuario: ' + dLogin.email)
+	console.log('contraseña: ' + dLogin.email)
+	}
+
+en el boton ingresar poner onClick={fnLogin}
+en inspeccionar en la pagina no debe mostrar errores (ingresar con usuario y password) en la consola mostrará
+los mensajes en la consola
+
+
+abrir laravel ejecutar en terminal
+php artisan serve 
+
+cd public
+php -S 127.0.0.1:8000

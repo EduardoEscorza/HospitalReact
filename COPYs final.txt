@@ -1,0 +1,52 @@
+COPY vehiculo (placa, marca, modelo, anofabricacion, nasientos, usovehiculo, clasevehiculo)
+FROM 'H:\se\Vehiculo.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;
+
+COPY usuario (cod_usu, nombres,apellidos,dni,usuario,contrasena,cod_ofi,rango,
+cargo,m1,m11,m12,m13,m2,m21,m22,m23,m24,m3,m31,m32)
+FROM 'H:\se\Usuario.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;
+
+COPY oficina (cod_ofi,nombre,distrito)
+FROM 'H:\se\Oficina.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;
+
+COPY factura (num_factura, cat, vigencia,aso_apellidos,aso_nombres,num_siniestro,nombre,apellido,edad,fecha,tipo,detalle,
+ruc,razon,tipodoc,numdoc,pagado,pendiente,motivo,tipodoc1,numdoc1,pagado1,evaluacion,observacion,medio,numdoc2,SSMA_TimeStamp)
+FROM 'H:\se\Factura.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;
+
+COPY detalle_catnatural(num, cat, ncat , anocat , dni , placa , usovehiculo ,clasevehiculo ,cuotas ,cuotaspagadas , precioaporte , aporteanual, 
+aportefondo , descuento , total , cuotainicial , deuda , soles, fecha , SSMA_TimeStamp)
+FROM 'H:\se\Detalle_Catnatural.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;
+
+COPY cliente (dni,nombres, apellidopaterno, apellidomaterno, fechanacimiento, direccion, nombreprovincia, nombredistrito,telefono,correo,fecha)
+FROM 'H:\se\Cliente.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;
+
+COPY catnatural(cat,ncat,anocat,nsolicitud,ncontrato,fechaemision,fechavigenciadesde,fechavigenciahasta,fechavigenciacontdesde,fechavigenciaconthasta,horaemision,estado,vendedor,fecha,oficina,empresa)
+FROM 'H:\se\Catnatural.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;
+
+COPY central(numcentral,fechaevento,horaevento,nombrecontacto,telefonocontacto,cat,anocat,placa,nombreasegurado,apellidosasegurado,
+nummotor,fechacontratodesde,fechacontratohasta,fechacertificadodesde,fechacertificadohasta,nombreconductor,numheridos,provincia,ubigeo,lugarsiniestro,fechasiniestro,hora,nomsiniestro,
+tiposiniestro,comisaria,nosocomio,ejecutivo,procurador,proinicio,prollegada,profin,medico,medinicio,medllegada,medfin,estado,usuario,observacion,SSMA_TimeStamp)
+FROM 'H:\se\Central.csv'
+DELIMITER ','
+Null as ' '
+CSV HEADER;

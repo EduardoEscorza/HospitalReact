@@ -22,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login', [LoginController::class, 'login']);
 Route::get('pacientes', [PacienteController::class, 'list']);
+Route::get('paciente', [PacienteController::class, 'get']);
 Route::post('paciente/crear', [PacienteController::class, 'create']);
+Route::post('paciente/actualizar', [PacienteController::class, 'update']);
 Route::post('paciente/borrar', [PacienteController::class, 'delete']);

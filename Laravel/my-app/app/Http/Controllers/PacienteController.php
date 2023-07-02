@@ -26,16 +26,32 @@ class PacienteController extends Controller
         return $paciente;
     }
 
+    public function get(Request $req){
+        $paciente = Paciente::find($req->id);
+        return $paciente;
+    }
+    
     public function list(){
         $pacientes = Paciente::all();
-
         return $pacientes;
+    }
+
+    public function update(Request $request){
+        $paciente = Paciente::FindOrFail($request->id);
+        $paciente->nombre = $request->nombre;
+        $paciente->edad = $request->edad;
+        $paciente->domicilio = $request->domicilio;
+
+        $paciente->save();
+        return $paciente;
     }
 
     public function delete(Request $request){
         $paciente = Paciente::find($request->id);
         $paciente->delete();
 
-        return "OK";
+        return "eliminado";
     }
+
+    
 }

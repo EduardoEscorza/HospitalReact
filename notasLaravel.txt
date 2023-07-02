@@ -1,0 +1,82 @@
+comenzar con login
+.env es para conectar a la base de datos y tipos.En este caso se utilizara Postgress (root pára ambas).
+Creamos una nueva base 2023_2_8ids1
+
+en .env
+
+BDCONECTION
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=2023_2_8ids1
+DB_USERNAME=postgres
+DB_PASSWORD=root
+
+En terminal: php artisan migrate
+
+C:\xampp\php php.ini: 	
+
+;extension=pdo_odbc
+extension=pdo_pgsql
+extension=pdo_sqlite
+extension=pgsql
+;extension=shmop
+
+terminal 1(no cerrarla)
+cd public : php -S 127.0.0.1:8000
+
+terminal 2
+composer require laravel/ui
+php artisan ui vue --auth
+php artisan migrate
+npm install
+npm run build
+
+abrimos postman
+crearemos un controlador
+php artisan make:controller LoginController
+
+abrimos app/http/controlers/LoginController.php
+escribimos el codigo de la foto
+
+mandar llamar a la funcion
+routes/api.php
+	ruta post:
+Route::post('login', [LoginController::class, 'login']);
+
+
+
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller
+{
+    public function login(Request $request){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            $user = Auth::user();
+
+            $user->tokens()->delete(); //evita multiples sesiones abiertas
+
+            $token = $user->createToken("AppMobile");
+
+            $token = explode("|", $token->plainTextToken); //numero de sesion/token
+
+            $arr = array('idUsr' => $user->id, 'token' => $token[1], 'nombre' => $user->name, 'error' => '');
+
+            return json_encode($arr);
+
+        }
+        else{
+
+            $arr = array('idUsr' => 0, 'token' => "", 'error' => "No existe el usuario o la contraseña esta incorrecta");
+            return json_encode($arr);
+
+        }
+    }
+}
