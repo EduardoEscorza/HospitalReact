@@ -2,7 +2,7 @@ import React from 'react'
 
 const Prueba = () => {
   return (
-    <div>Prueba</div>
+    <div>Testeo a la nueva rama </div>
   )
 }
 
