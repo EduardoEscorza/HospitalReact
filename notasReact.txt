@@ -48,7 +48,7 @@ const LoginComponent = () => {
 		e.preventDefault();
 		
 	console.log('usuario: ' + dLogin.email)
-	console.log('contraseña: ' + dLogin.email)
+	console.log('contraseï¿½a: ' + dLogin.email)
 	}
 	
 	await axios.post('http://127.0.0.1:8000/api/login',dLogin)
@@ -73,7 +73,7 @@ const LoginComponent = () => {
 }
 
 
-em textfield usuario y contraseña
+em textfield usuario y contraseï¿½a
 usuario: value={dLogin.email} onChange={(e) => inputChange(e)} label usuario name="email"
 password: value={dLogin.password} onChange={(e) => inputChange(e)} name="password"
 
@@ -83,11 +83,11 @@ funcion para iniciar el login abajo de input change antes de return
 		e.preventDefault();
 		
 	console.log('usuario: ' + dLogin.email)
-	console.log('contraseña: ' + dLogin.email)
+	console.log('contraseï¿½a: ' + dLogin.email)
 	}
 
 en el boton ingresar poner onClick={fnLogin}
-en inspeccionar en la pagina no debe mostrar errores (ingresar con usuario y password) en la consola mostrará
+en inspeccionar en la pagina no debe mostrar errores (ingresar con usuario y password) en la consola mostrarï¿½
 los mensajes en la consola
 
 
@@ -96,3 +96,5 @@ php artisan serve
 
 cd public
 php -S 127.0.0.1:8000
+
+jejeje
